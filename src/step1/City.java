@@ -4,18 +4,20 @@ import java.util.Random;
 
 public class City {
     private Random random;
+    private NameOfCities destinationCity;
+    private int distance;
 
     public City() {
         random = new Random();
     }
 
-    private int getRandomNumber() {
+    private int getRandomNumber(int num1,int num2) {
         Random random = new Random();
-        return random.nextInt(NameOfCities.values().length);
+        return random.nextInt(num1,num2);
     }
 
-    public NameOfCities getElement() {
-        int num = getRandomNumber();
+    private NameOfCities getElement() {
+        int num = getRandomNumber(0,7);
         NameOfCities element1 = NameOfCities.ASTANA; //пока что просто проинициализируем
         switch (num) {
             case 0:
@@ -25,7 +27,7 @@ public class City {
                 element1 = NameOfCities.BERLIN;
                 break;
             case 2:
-                element1 = NameOfCities.BRAZILIZA;
+                element1 = NameOfCities.PEKIN;
                 break;
             case 3:
                 element1 = NameOfCities.JAKARTA;
@@ -39,18 +41,19 @@ public class City {
             case 6:
                 element1 = NameOfCities.OSH;
                 break;
-            case 7:
-                element1 = NameOfCities.PEKIN;
-                break;
-            case 8:
-                element1 = NameOfCities.TOKIO;
-                break;
-            case 9:
-                element1 = NameOfCities.TOKMOK;
-                break;
             default:
                 System.out.println("Some error happened!");
         }
         return element1;
+    }
+
+    public NameOfCities getDestinationCity() {
+        destinationCity=getElement();
+        return destinationCity;
+    }
+
+    public int getDistance() {
+        distance=getRandomNumber(50,100);
+        return distance;
     }
 }
