@@ -6,16 +6,17 @@ import step2.enums.Quality;
 import java.util.*;
 
 public class Action {
-    private final City city;
-    private final Event event;
-    private final NameOfCities destinationCity;
-    private final int distance;
-    private final Dealer dealer;
-    private final List<Product> listOfProducts;
+    private  City city;
+    private  Event event;
+    private  NameOfCities destinationCity;
+    private  int distance;
+    private  Dealer dealer;
+    private  List<Product> listOfProducts;
     private int speed;
     private double remainMoney;
 
-    public Action() {
+
+    public void startAction() {
         listOfProducts = new ArrayList<>();
         city = new City();
         event = new Event();
@@ -23,9 +24,6 @@ public class Action {
         distance = city.getDistance();
         dealer = new Dealer(300);
         speed = dealer.getSpeed();
-    }
-
-    public void startAction() {
         System.out.printf("Город назначения:%s ,Расстояние:%s%n", destinationCity, distance);
         int startSpeed = speed;
         System.out.printf("Количество денег:%s ,Вмещаемость:%s ,Начальная скорость:%s%n", dealer.getMoney(), dealer.getLoadCapacity(), dealer.getSpeed());
