@@ -3,27 +3,38 @@ package step1;
 import java.util.Random;
 
 public class Dealer {
-    private int loadCapacity;
-    private int speed;
-    private int money;
-    private Random random;
+    private double loadCapacity;
+    private final int speed;
+    private double money;
 
     Dealer(int loadCapacity) {
-        random = new Random();
-        this.loadCapacity=loadCapacity;
+        Random random = new Random();
+        this.loadCapacity = loadCapacity;
+        money = random.nextInt(500, 1000);
+        speed = random.nextInt(1, 6);
     }
 
-    public int getLoadCapacity() {
+    public double getLoadCapacity() {
         return loadCapacity;
     }
 
     public int getSpeed() {
-        speed = random.nextInt(3, 6);
         return speed;
     }
 
-    public int getMoney() {
-        money = random.nextInt(500, 1000);
+    public double getMoney() {
         return money;
+    }
+
+    public void subMoney(double m) {
+        money = money - m;
+    }
+
+    public void subWeight(double m) {
+        loadCapacity = loadCapacity - m;
+    }
+
+    public void addMoney(double m) {
+        money = money + m;
     }
 }

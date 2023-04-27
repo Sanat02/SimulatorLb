@@ -3,21 +3,21 @@ package step1;
 import java.util.Random;
 
 public class City {
-    private Random random;
+    private final Random random;
     private NameOfCities destinationCity;
     private int distance;
 
     public City() {
         random = new Random();
+        distance = getRandomNumber(50, 100);
     }
 
-    private int getRandomNumber(int num1,int num2) {
-        Random random = new Random();
-        return random.nextInt(num1,num2);
+    private int getRandomNumber(int num1, int num2) {
+        return random.nextInt(num1, num2);
     }
 
     private NameOfCities getElement() {
-        int num = getRandomNumber(0,7);
+        int num = getRandomNumber(0, 7);
         NameOfCities element1 = NameOfCities.ASTANA; //пока что просто проинициализируем
         switch (num) {
             case 0:
@@ -48,12 +48,16 @@ public class City {
     }
 
     public NameOfCities getDestinationCity() {
-        destinationCity=getElement();
+        destinationCity = getElement();
         return destinationCity;
     }
 
     public int getDistance() {
-        distance=getRandomNumber(50,100);
         return distance;
+    }
+
+    public void subDistance(double speed) {
+        distance -= speed;
+
     }
 }

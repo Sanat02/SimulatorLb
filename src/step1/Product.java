@@ -1,23 +1,36 @@
 package step1;
 
-import java.awt.*;
 import java.util.Random;
 
 public class Product {
-    private double weight;
-    private ProductType goodType;
+    private final double weight;
+    private final ProductType goodType;
     private Quality qualityOfGood;
     private double price;
-    private Random random;
+    private final Random random;
+
+    public ProductType getGoodType() {
+        return goodType;
+    }
 
     public Product() {
         random = new Random();
         this.goodType = getProductType();
         this.weight = random.nextInt(10, 51);
-        qualityOfGood = getQuality();
-        price = getPrice();
+        qualityOfGood = Quality.NORMAL;
+        price = priceOfProduct();
+    }
 
+    public Quality getQualityOfGood() {
+        return qualityOfGood;
+    }
 
+    public void setQualityOfGood(Quality qualityOfGood) {
+        this.qualityOfGood = qualityOfGood;
+    }
+
+    public double getWeight() {
+        return weight;
     }
 
     private ProductType getProductType() {
@@ -49,7 +62,7 @@ public class Product {
         return element1;
     }
 
-    private double priceOfProduct() {
+    public double priceOfProduct() {
         double num;
         switch (goodType) {
             case DYE -> num = 60;
@@ -64,7 +77,7 @@ public class Product {
     }
 
 
-    private double getPrice() {
+    public double getFinalPrice() {
         price = priceOfProduct();
         switch (qualityOfGood) {
             case NORMAL -> price *= 1.2;
@@ -78,39 +91,8 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "weight=" + weight +
-                ", goodType=" + goodType +
-                ", qualityOfGood=" + qualityOfGood +
-                ", price=" + price +
-                '}';
+        return "Product{" + "weight=" + weight + ", goodType=" + goodType + ", qualityOfGood=" + qualityOfGood + ", price=" + price + '}';
     }
 
-    private Quality getQuality() {
-        int num = random.nextInt(0, 5);
-        Quality element1 = Quality.NORMAL; //пока что просто проинициализируем
-        switch (num) {
-            case 0:
-                element1 = Quality.NORMAL;
-                break;
-            case 1:
-                element1 = Quality.LITTLE_SPOILED;
-                break;
-            case 2:
-                element1 = Quality.HALF_SPOILED;
-                break;
-            case 3:
-                element1 = Quality.ALMOST_SPOILED;
-                break;
-            case 4:
-                element1 = Quality.WHOLE_SPOILED;
-                break;
-            default:
-                System.out.println("NO such pquality!");
-
-        }
-        return element1;
-
-    }
 
 }

@@ -3,14 +3,13 @@ package step1;
 import java.util.Random;
 
 public class Event {
-    private Random random;
+    private final Random random;
 
     public Event() {
         random = new Random();
     }
 
     private int getRandomNumber() {
-        Random random = new Random();
         return random.nextInt(NameOfEvents.values().length);
     }
 
