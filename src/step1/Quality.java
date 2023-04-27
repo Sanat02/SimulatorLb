@@ -1,5 +1,0 @@
-package step1;
-
-public enum Quality {
-    NORMAL, LITTLE_SPOILED, HALF_SPOILED, ALMOST_SPOILED, WHOLE_SPOILED
-}
