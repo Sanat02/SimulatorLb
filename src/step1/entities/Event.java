@@ -1,8 +1,6 @@
 package step1.entities;
-
 import step1.state.Quality;
 import step1.enums.NameOfEvents;
-
 import java.util.*;
 
 public class Event {
@@ -11,13 +9,11 @@ public class Event {
     private Dealer dealer;
     private City city;
 
-
     public Event(List<Product> listOfProducts, Dealer dealer, City city) {
         random = new Random();
         this.listOfProducts = listOfProducts;
         this.dealer = dealer;
         this.city = city;
-
     }
 
     private int getRandomNumber() {
