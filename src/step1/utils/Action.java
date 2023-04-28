@@ -74,7 +74,7 @@ public class Action {
 
             System.out.printf("Начальная общая цена товаров :%s ,Конечная цена:%s,Дни:%s%n", startMoney - remainMoney, totalMoney, day);
         } else {
-            System.out.printf("Потратили:%s ,Заработали:%s,Дни:%s%n", dealer.getMoney(), startMoney, day);
+            System.out.printf("Потратили:%s ,Заработали:%s,Дни:%s%n",  startMoney,dealer.getMoney(), day);
         }
 
         String s = (totalMoney) - (startMoney - remainMoney) > 0 ? "Торговец получил прибыль!" : "Торговец НЕ получил прибыль!";

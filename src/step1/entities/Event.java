@@ -1,6 +1,8 @@
 package step1.entities;
+
 import step1.state.Quality;
 import step1.enums.NameOfEvents;
+
 import java.util.*;
 
 public class Event {
@@ -67,10 +69,9 @@ public class Event {
             if (dealer.getSpeed() < 1) {
                 dealer.setSpeed(1);
             }
-            int[] arr={0,0,0,1,1,1,1,1,1,1};
-            int index=random.nextInt(10);
-            if(arr[index]==0)
-            {
+            int[] arr = {0, 0, 0, 1, 1, 1, 1, 1, 1, 1};
+            int index = random.nextInt(10);
+            if (arr[index] == 0) {
                 System.out.println("Качество продукта испортилась!");
                 spoilProduct();
             }
@@ -128,8 +129,14 @@ public class Event {
                 }
             }
 
+            List<Quality> listQuality = new ArrayList<>();
+            for (Map.Entry<Integer, Quality> entry : mp.entrySet()) {
+                for (int i = 0; i < listOfProducts.size(); i++) {
+                    listQuality.add(entry.getValue());
+                }
+            }
             for (int i = 0; i < listOfProducts.size(); i++) {
-                if (listOfProducts.get(i).getQualityOfGood().equals(mp.get(0))) {
+                if (listOfProducts.get(i).getQualityOfGood().equals(listQuality.get(0))) {
                     index = i;
                     break;
                 }
@@ -163,8 +170,8 @@ public class Event {
             }
         }
     }
-    private void spoilProduct()
-    {
+
+    private void spoilProduct() {
         int checkSpoiled = 0;
         Random random = new Random();
         int num = random.nextInt(listOfProducts.size());
