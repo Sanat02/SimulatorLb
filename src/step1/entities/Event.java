@@ -150,6 +150,7 @@ public class Event {
         Random random = new Random();
         int num = random.nextInt(0, 2);
         if (num == 0) {
+            System.out.println("Остаемся на ночлег");
             System.out.println("Идет продажа товара.....");
             int rantProductToSell = random.nextInt(listOfProducts.size());
             dealer.addMoney(listOfProducts.get(rantProductToSell).getFinalPrice() / 2);
@@ -157,6 +158,7 @@ public class Event {
             System.out.printf("Товар который был продан:[%s %nОбщее количество денег после оплаты ночлега:%s%n",
                     listOfProducts.get(rantProductToSell), dealer.getMoney());
             listOfProducts.remove(rantProductToSell);
+            dealer.setSpeed(0);
         } else {
             System.out.println("Идет покупка товара.....");
             Product p = new Product();
